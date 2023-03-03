@@ -41,7 +41,7 @@ int main()
                 i=x;
                 j=y;
                 
-                //superior derecha
+                //superior izquierda
                 while(((i>0)&&(j>0))&&((i<=7)&&(j<=7)))
                 {
                     i-=1;
@@ -50,7 +50,7 @@ int main()
                     //printf("%d,%d \n", i, j);
                 }
                 
-                //superior izquierda
+                //superior derecha
                 i=x;
                 j=y;
                 while(((i>0)&&(j>=0))&&((i<=7)&&(j<7)))
