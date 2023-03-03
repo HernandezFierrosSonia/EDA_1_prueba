@@ -1,11 +1,11 @@
 #include <stdio.h>
 
+void alfil();
+void torre();
+
 int main()
 {
     int opcion;
-    int x, y;
-    char tablero[8][8];//nota, este no empieza desde cero
-    int i, j;
     while(1)
     {
         printf("Choose an option:\n");
@@ -18,126 +18,10 @@ int main()
         switch(opcion)
         {
             case 1:
-                printf("\n");
-                printf("Escribe las coordenadas (desde 1 a 8):\n");
-                printf("Coordenada x: ");
-                scanf("%i", &x);
-                printf("Coordenada y: ");
-                scanf("%i", &y);
-                printf("\n");
-                
-                x=x-1;
-                y=y-1;
-
-                for(i=0;i<8;i++)
-                {
-                    for(j=0;j<8;j++)
-                    {
-                        tablero[i][j]='o';
-                    }
-                }
-                tablero[x][y]='A';
-
-                i=x;
-                j=y;
-                
-                //superior izquierda
-                while(((i>0)&&(j>0))&&((i<=7)&&(j<=7)))
-                {
-                    i-=1;
-                    j-=1;//j-=1
-                    tablero[i][j]='x';
-                    //printf("%d,%d \n", i, j);
-                }
-                
-                //superior derecha
-                i=x;
-                j=y;
-                while(((i>0)&&(j>=0))&&((i<=7)&&(j<7)))
-                {
-                    i-=1;
-                    j+=1;
-                    tablero[i][j]='x';
-                    //printf("%d,%d \n", i, j);
-                }
-                        
-                //inferior izquierda
-                i=x;
-                j=y;
-                while(((i>=0)&&(j>0))&&((i<7)&&(j<=7)))
-                {
-                    i+=1;
-                    j-=1;
-                    tablero[i][j]='x';
-                    //printf("%d,%d \n", i, j);
-                }
-                        
-                //inferior derecha
-                i=x;
-                j=y;
-                while(((i>=0)&&(j>=0))&&((i<7)&&(j<7)))
-                {
-                    i+=1;
-                    j+=1;
-                    tablero[i][j]='x';
-                    //printf("%d,%d \n", i, j);
-                }
-                        
-                for(i=0;i<8;i++)
-                {
-                    for(j=0;j<8;j++)
-                    {
-                        printf("%c", tablero[i][j]);
-                    }
-                    printf("\n");
-                }
-                printf("\n");
+                alfil();
                 break;
             case 2:
-                printf("\n");
-                printf("Escribe las coordenadas (desde 1 a 8):\n");
-                printf("Coordenada x: ");
-                scanf("%i", &x);
-                printf("Coordenada y: ");
-                scanf("%i", &y);
-                printf("\n");
-
-                x-=1;
-                y-=1;
-
-                for(i=0;i<8;i++)
-                {
-                    for(j=0;j<8;j++)
-                    {
-                        tablero[i][j]='o';
-                    }
-                }
-                tablero[x][y]='T';
-
-                for(i=0;i<8;i++)
-                {
-                    for(j=0;j<8;j++)
-                    {
-                        if((i!=x)||(j!=y))//no entra si es la coordenada que nos dió el usuario
-                        {
-                            if((i==x)||(j==y))
-                            {
-                                //printf("%d, %d \n", i,j);
-                                tablero[i][j]='x';
-                            }
-                        }
-                    }
-                }
-                
-                for(i=0;i<8;i++)
-                {
-                    for(j=0;j<8;j++)
-                    {
-                    printf("%c", tablero[i][j]);
-                    }
-                    printf("\n");
-                } 
-                printf("\n");
+                torre();
                 break;
             case 3:
                 return 12;
@@ -146,4 +30,138 @@ int main()
                 printf("Opción no válida.\n");
         }
     }
+}
+
+void alfil()
+{
+    int x, y;
+    char tablero[8][8];//nota, este no empieza desde cero
+    int i, j;
+
+    printf("\n");
+    printf("Escribe las coordenadas (desde 1 a 8):\n");
+    printf("Coordenada x: ");
+    scanf("%i", &x);
+    printf("Coordenada y: ");
+    scanf("%i", &y);
+    printf("\n");
+                
+    x=x-1;
+    y=y-1;
+
+    for(i=0;i<8;i++)
+    {
+        for(j=0;j<8;j++)
+        {
+            tablero[i][j]='o';
+        }
+    }
+    tablero[x][y]='A';
+
+    i=x;
+    j=y;
+                
+    //superior izquierda
+    while(((i>0)&&(j>0))&&((i<=7)&&(j<=7)))
+    {
+        i-=1;
+        j-=1;//j-=1
+        tablero[i][j]='x';
+        //printf("%d,%d \n", i, j);
+    }
+                
+    //superior derecha
+    i=x;
+    j=y;
+    while(((i>0)&&(j>=0))&&((i<=7)&&(j<7)))
+    {
+        i-=1;
+        j+=1;
+        tablero[i][j]='x';
+        //printf("%d,%d \n", i, j);
+    }
+                        
+    //inferior izquierda
+    i=x;
+    j=y;
+    while(((i>=0)&&(j>0))&&((i<7)&&(j<=7)))
+    {
+        i+=1;
+        j-=1;
+        tablero[i][j]='x';
+        //printf("%d,%d \n", i, j);
+    }
+                        
+    //inferior derecha
+    i=x;
+    j=y;
+    while(((i>=0)&&(j>=0))&&((i<7)&&(j<7)))
+    {
+        i+=1;
+        j+=1;
+        tablero[i][j]='x';
+        //printf("%d,%d \n", i, j);
+    }
+                        
+    for(i=0;i<8;i++)
+    {
+        for(j=0;j<8;j++)
+        {
+            printf("%c", tablero[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void torre()
+{
+    int x, y;
+    char tablero[8][8];//nota, este no empieza desde cero
+    int i, j;
+    
+    printf("\n");
+    printf("Escribe las coordenadas (desde 1 a 8):\n");
+    printf("Coordenada x: ");
+    scanf("%i", &x);
+    printf("Coordenada y: ");
+    scanf("%i", &y);
+    printf("\n");
+
+    x-=1;
+    y-=1;
+
+    for(i=0;i<8;i++)
+    {
+        for(j=0;j<8;j++)
+        {
+            tablero[i][j]='o';
+        }
+    }
+    tablero[x][y]='T';
+
+    for(i=0;i<8;i++)
+    {
+        for(j=0;j<8;j++)
+        {
+            if((i!=x)||(j!=y))//no entra si es la coordenada que nos dió el usuario
+            {
+                if((i==x)||(j==y))
+                {
+                    //printf("%d, %d \n", i,j);
+                    tablero[i][j]='x';
+                }
+            }
+        }
+    }
+                
+    for(i=0;i<8;i++)
+    {
+        for(j=0;j<8;j++)
+        {
+            printf("%c", tablero[i][j]);
+        }
+        printf("\n");
+    } 
+    printf("\n");
 }
