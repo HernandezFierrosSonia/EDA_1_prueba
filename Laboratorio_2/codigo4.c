@@ -5,18 +5,23 @@
 */
 int main ()
 {
-    short arr[5], *apArr;
-    apArr = &arr[0];//apArr=arr;
+    int arr[5], *apArr;   //short arr[5], *apArr;
+    apArr = &arr[0];     //apArr=arr;
 
     // imprime la dirección de memoria del arreglo en la posición [0]
-    printf("Dirección del arreglo en la primera posición: %x\n",&arr[0]);
+    printf("Dirección del arreglo en la primera posición: &arr[0]= %p\n",&arr[0]);//en short lleva %x
+    printf("La linea anterior y esta son iguales %p\n", arr);
+    //printf("&arr[1]= %p\n",&arr[1]);//son diferentes a ínidce 0
+    //printf("&arr[1]=%p\n",&arr[2]);//son diferentes a ínidce 0
+
     // imprime la dirección de memoria del arreglo
     // (el nombre del arreglo es un apuntador)
-    printf("Dirección del arreglo: %x\n",&arr);
+    printf("Dirección del arreglo: %p\n",&arr);//la dirección del arreglo es la misma que el arreglo en su primer índice
+                                               //&arr=&arr[0]=arr
 
     // imprime la dirección de memoria del apuntador apArr
-    printf("Dirección del apuntador: %x\n",apArr);//direcciòn original
-
+    printf("Dirección del apuntador: %p\n", apArr);//direcciòn original//dirección de arr[0], es decir &arr[0]
+    printf("Dirección del apuntador: %p\n", apArr);
     return 0;
 }
  

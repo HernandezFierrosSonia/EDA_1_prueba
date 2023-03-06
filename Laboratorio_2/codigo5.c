@@ -7,8 +7,10 @@
  {
     int nums[] = {55,44,33,22,11};
     int *ap, cont;
-    ap = nums;// ap = &nums[0];
+    ap = nums;// ap = &nums[0]; //¿ap=&nums?
+
     printf("Pasar valor: %d\n", *ap);//imprime valor original pero del indice 0
+    
     pasarValor(*ap);//enviamos valor original del indice 0?
     printf("Pasar referencia: %d\n", *ap);
     pasarReferencia(ap);
