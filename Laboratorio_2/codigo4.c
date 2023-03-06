@@ -21,7 +21,7 @@ int main ()
 
     // imprime la dirección de memoria del apuntador apArr
     printf("Dirección del apuntador: %p\n", apArr);//direcciòn original//dirección de arr[0], es decir &arr[0]
-    printf("Dirección del apuntador: %p\n", apArr);
+    printf("Dirección del apuntador: %p\n", apArr+1);
     return 0;
 }
  
