@@ -5,12 +5,17 @@
 
 int main()
 {
-    short nums[] = {55,44,33,22,11};
-    short *ap, cont;
-    ap = nums;//ap = &nums[0];
+    int nums[] = {55,44,33,22,11};
+    int *ap, cont;
+    ap = nums;//ap = &nums[0];//ap=&nums
+
     for (cont = 0; cont < 5 ; cont++)
     {
-        printf("%x\n",(ap+cont));
+        printf("%p\n",(ap+cont));//en short se usa %x
     }
+
+    //A continuación mi propia cosecha:
+    printf("%d\n", *ap+1);//me da 56
+
     return 0;
 }
