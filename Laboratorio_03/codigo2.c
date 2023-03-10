@@ -2,6 +2,7 @@
 #define TAM 2
 #define NUM_DIR 2
 //una estructura por cada pieza, coordenada en cada estruct
+//puedes crear una estructura para el tablero
 
 struct pelicula{
     char nombre[20];
