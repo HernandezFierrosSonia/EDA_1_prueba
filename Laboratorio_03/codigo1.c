@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-struct pelicula{
+struct pelicula
+{
     char *nombre;
     char *genero;
     short anio;
