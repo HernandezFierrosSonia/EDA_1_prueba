@@ -4,7 +4,7 @@ TYPA
 {
     char *nombre;
     char *genero;
-    short anio;
+    short year;
     short numDirectores;
     char *directores[10];
 };
@@ -14,7 +14,7 @@ TYPA llenarDatosPelicula(char *, char *, short , short , char *[10]);
 
 int main()
 {
-    char *directores[10];
+    char *directores[10];//despercio de memoria para los que no se llenaron
     directores[0]="Chris Columbus"; 
     directores[1]="Alfonso Cuaron";
     directores[2]="Mike Newell";
@@ -23,28 +23,26 @@ int main()
     return 0;
 }
   
-TYPA llenarDatosPelicula(char *nombre, char *genero, short anio, short numDirectores, char *directores[10])
+TYPA llenarDatosPelicula(char *nombre, char *genero, short year, short numDirectores, char *directores[10])
 {
     TYPA movie; 
     movie.nombre = nombre; 
     movie.genero = genero;
-    movie.anio = anio;
+    movie.year = year;
     movie.numDirectores = numDirectores;
-    int cont = 0;
-    for ( ; cont < movie.numDirectores ; cont++)
-    {
-        movie.directores[cont] = directores[cont];
-    }
+    int i;
+    for (i=0;i<movie.numDirectores;i++)
+        movie.directores[i] = directores[i];
     return movie;
 }
 
 void imprimirDatosPelicula(TYPA movie)
 {
+    int i;
     printf("PELICULA: %s\n", movie.nombre);
     printf("GENERO: %s\n", movie.genero);
-    printf("ANIO: %d\n", movie.anio);
+    printf("AÑO: %d\n", movie.year);
     printf("DIRECTOR(ES):\n");
-    int i = 0;
-    for ( ; i < movie.numDirectores ; i++)//que pasa si no hubiera inicializado la línea anterior, supongo que error por que lo pones en casillas al i
+    for (i=0;i<movie.numDirectores;i++)//que pasa si no hubiera inicializado la línea anterior, supongo que error por que lo pones en casillas al i
         printf("%s\n", movie.directores[i]);
 }

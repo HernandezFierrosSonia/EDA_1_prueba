@@ -1,17 +1,17 @@
 #include<stdio.h>
 
-void caballo();
-void alfil();
-void torre();
-void reina();
-void rey();
+void caballo(struct bishop);
+void alfil(struct pawn);
+void torre(struct rook);
+void reina(struct queen);
+void rey(struct king);
 
 struct bishop// caballo
 {
     int x;
     int y;
     char tablero[8][8];//se me hace muy feo crear un arreglo por cada struct, es más se van a crear muchisismos, aunque no sé explicar por qué
-    
+
 };
 
 struct pawn //alfil
@@ -68,19 +68,24 @@ int main()
         switch(opcion)
         {
             case 1:
-                caballo(chessboard, x, y);
+                struct bishop arreglo[1];//una pieza, solo quería ser excentrica
+                caballo(arreglo);
                 break;
             case 2:
-                alfil(chessboard, x, y);
+                struct pawn pieza;
+                alfil(pieza);
                 break;
             case 3:
-                torre(chessboard, x, y);
+                struct rook piececita;//luego probar si puedo poner igual pieza
+                torre(piececita);
                 break;
             case 4:
-                reina(chessboard, x, y);
+                struct queen piecezota;
+                reina(piecezota);
                 break;
             case 5:
-                rey(chessboard, x, y);
+                struct king piece;
+                rey(piece);
                 break;
             case 6:
                 return 18;
