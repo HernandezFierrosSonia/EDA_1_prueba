@@ -40,7 +40,7 @@ void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta dec
         getchar();
         printf("Ingrese año película: ");
         setbuf(stdin, NULL);
-        scanf("%d", &movie.anio);
+        scanf("%hd", &movie.anio);//lo único que corregí, antes era %d
         movie.numDirectores = NUM_DIR;
         for (enesimo=0 ; enesimo<NUM_DIR ; enesimo++)
         {
@@ -62,7 +62,7 @@ void imprimirArreglo(struct pelicula arreglo [TAM])
         printf("####### Película %d #######\n", iesimo+1);
         printf("PELÍCULA: %s\n", arreglo[iesimo].nombre);
         printf("GÉNERO: %s\n", arreglo[iesimo].genero);
-        printf("AÑO: %d\n", arreglo[iesimo].anio);
+        printf("AÑO: %hd\n", arreglo[iesimo].anio);//aquí funciona con %hd y con %d
         printf("DIRECTOR(ES):\n");
         for (enesimo=0 ; enesimo<arreglo[iesimo].numDirectores ; enesimo++)
         {

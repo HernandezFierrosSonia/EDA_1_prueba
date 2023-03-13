@@ -1,5 +1,6 @@
 #include <stdio.h>
 //TYPA es struct pelicula
+//en este código no lee
 TYPA
 {
     char *nombre;
