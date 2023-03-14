@@ -8,7 +8,7 @@
 
 struct pelicula
 {
-    char nombre[20];
+    char nombre[20];//maximo de caracteres, pero pudo haber sido char *nombre;
     char genero[20];
     int  year;
     int numDirectores;
@@ -29,6 +29,10 @@ int main()
 void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta declarado que va a recibir * ya lo hace ser uno. Confirmo
 {//creo una variable movie tipo struct pelicula y la vaoy enviando el número de veces que el arreglo tenga de índice
     int i, n;
+
+    /*la única razón por la que trabajo con copias pese haber enviado el original es por que es un arreglo 
+    pero de que se puede se puede, esta es la manera floja de evitar entender el manejo de apuntadores*/
+
     for (i=0 ; i<TAM ; i++)//son solo dos veces que se repite el ciclo
     {
         struct pelicula movie;//se puede sacar del for, pa' que no se cree doble y solo se sobreescriba
@@ -45,7 +49,7 @@ void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta dec
             printf("Ingrese director %d: ", n+1);
             scanf("%s", movie.directores[n]);
         }
-        arreglo[i]=movie;//lo envía antes de terminar el for
+        arreglo[i]=movie;//lo guarda antes de terminar el for
     }
 }
 

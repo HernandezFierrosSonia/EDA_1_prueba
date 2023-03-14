@@ -23,6 +23,8 @@ int main()
     directores[0]="Chris Columbus"; 
     directores[1]="Alfonso Cuaron";
     directores[2]="Mike Newell";
+
+    //en la línea de abajo, cunfunde menos si hasta arriba la declaras y ya nadamás aquí la inicializas: harry=funcipon()
     TYPA HARRY = llenarDatosPelicula("Harry Potter", "Misterio y aventuras", 2001, 3, directores);//envie directores, envie una dirección, otra forma de hacerlo es declarar el arrego sin ser apuntador y aquí mandar &arreglo
     imprimirDatosPelicula(HARRY);
     return 0;

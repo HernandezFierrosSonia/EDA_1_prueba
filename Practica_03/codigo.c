@@ -18,7 +18,7 @@ struct pawn //alfil
     int y;
     //char tablero[8][8];
     
-};
+};//pieza;
 
 struct rook //torre
 {
@@ -67,7 +67,7 @@ int main()
         switch(opcion)
         {
             case 1:
-                struct bishop* arreglo[1];//una pieza, solo quería ser excentrica
+                struct bishop arreglo[1];//una pieza, solo quería ser excentrica
                 caballo(arreglo);//estas enviando una dirección
                 break;
             case 2:
@@ -96,7 +96,7 @@ int main()
     }
 }
 
-void caballo(struct bishop arreglo[1])//me pregunto que pasa si no lo recibo como un arreglo de uno y solo como una variable
+void caballo(struct bishop arreglo[1])//me pregunto que pasa si no lo recibo como un arreglo de uno y solo como una variable, quién sabe, por que en la practica 2 no sabía eso y recibí la dirección del arreglo muchas veces
 {//sinónimo de alfil
     arreglo[1].x=3;
     arreglo[1].y=7;
@@ -112,10 +112,10 @@ void caballo(struct bishop arreglo[1])//me pregunto que pasa si no lo recibo com
     };*/
 }
 
-void alfil(struct pawn obispo)//recibimos direcciones
+void alfil(struct pawn* obispo)//recibimos direcciones
 {
-    obispo.x=2;
-    obispo.y=8;
+    obispo->x=2;
+    obispo->y=8;
     /*obispo.tablero={
         {'o','o','o','o','o','o','o','o'},
         {'o','o','o','o','o','o','o','A'}, 
@@ -128,10 +128,10 @@ void alfil(struct pawn obispo)//recibimos direcciones
     };*/
 }
 
-void torre(struct rook roque)//torre antiguamente conocida como roque
+void torre(struct rook* roque)//torre antiguamente conocida como roque
 {
-    roque.x=1;
-    roque.y=3;
+    roque->x=1;
+    roque->y=3;
     /*roque.tablero={
         {'o','o','T','o','o','o','o','o'},
         {'o','o','o','o','o','o','o','o'}, 
@@ -144,7 +144,7 @@ void torre(struct rook roque)//torre antiguamente conocida como roque
     };*/
 }
 
-void reina(struct queen array[1])
+void reina(struct queen array[1])//creo que los arreglos son los únicos a quienes cuando los declaras hasta arriba como apuntadores, aquí ya no hace falta
 {
     array[1].x=5;
     array[1].y=2;
@@ -160,10 +160,10 @@ void reina(struct queen array[1])
     };*/
 }
 
-void rey(struct king monarca)
+void rey(struct king* monarca)
 {
-    monarca.x=1;
-    monarca.y=4;
+    monarca->x=1;
+    monarca->y=4;
     /*monarca.tablero={
         {'o','o','o','R','o','o','o','o'},
         {'o','o','o','o','o','o','o','o'}, 
