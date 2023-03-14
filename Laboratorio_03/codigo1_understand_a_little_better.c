@@ -31,7 +31,7 @@ int main()
 TYPA llenarDatosPelicula(char *nombre, char *genero, short year, short numDirectores, char *directores[10])
 {
     TYPA movie;//me gustaban más los pauntadores
-    //aquí por ejemplo creó una variable igual a la que tiene que devolver 
+    //aquí por ejemplo creó una variable igual a la que tiene que devolver, al igual que el otro código
     movie.nombre = nombre; 
     movie.genero = genero;
     movie.year = year;

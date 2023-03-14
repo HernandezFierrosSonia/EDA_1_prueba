@@ -9,7 +9,7 @@ struct pelicula{
     char genero[20];
     short anio;
     short numDirectores;
-    char directores[NUM_DIR][20];
+    char directores[NUM_DIR][20];//ha de ser el máximo de palabras
 };
 
 void llenarArreglo(struct pelicula *);
@@ -18,12 +18,12 @@ void imprimirArreglo(struct pelicula *);
 int main()
 {
     struct pelicula arreglo[TAM];//son 2 peliculas, ya que tam vale 2
-    llenarArreglo (arreglo);//envió copia segpun yo
-    imprimirArreglo (arreglo);//envió copia
+    llenarArreglo (arreglo);
+    imprimirArreglo (arreglo);
     return 0;
 }  
 
-void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta declarado qye va a recibir * ya lo hace ser uno 
+void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta declarado que va a recibir * ya lo hace ser uno 
 {
     int iesimo, enesimo;
     for (iesimo=0 ; iesimo<TAM ; iesimo++)//son solo dos veces que s erepite el ciclo

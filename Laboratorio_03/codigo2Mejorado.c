@@ -4,6 +4,7 @@
 //una estructura por cada pieza, coordenada en cada estruct
 //puedes crear una estructura para el tablero
 //este código sí lee del usuario
+//este código usa apuntadores
 
 struct pelicula
 {
@@ -11,7 +12,7 @@ struct pelicula
     char genero[20];
     int  year;
     int numDirectores;
-    char directores[NUM_DIR][20];
+    char directores[NUM_DIR][20];//ha de ser el máximo de letras que puedes poner 
 };
 
 void llenarArreglo(struct pelicula *);
@@ -26,11 +27,11 @@ int main()
 }  
 
 void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta declarado que va a recibir * ya lo hace ser uno. Confirmo
-{
+{//creo una variable movie tipo struct pelicula y la vaoy enviando el número de veces que el arreglo tenga de índice
     int i, n;
     for (i=0 ; i<TAM ; i++)//son solo dos veces que se repite el ciclo
     {
-        struct pelicula movie;
+        struct pelicula movie;//se puede sacar del for, pa' que no se cree doble y solo se sobreescriba
         printf("####### Película %d #######\n", i+1);
         printf("Ingrese nombre película: ");
         scanf("%s", movie.nombre);
@@ -44,7 +45,7 @@ void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta dec
             printf("Ingrese director %d: ", n+1);
             scanf("%s", movie.directores[n]);
         }
-        arreglo[i] = movie;
+        arreglo[i]=movie;//lo envía antes de terminar el for
     }
 }
 
