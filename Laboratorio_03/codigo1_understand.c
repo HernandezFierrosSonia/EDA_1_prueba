@@ -23,7 +23,7 @@ int main()
     return 0;
 }
   
-TYPA llenarDatosPelicula(char *nombre, char *genero, short year, short numDirectores, char *directores[10])
+TYPA llenarDatosPelicula(char *nombre, char *genero, short year, short numDirectores, char *directores[10])//entiendele bien a esto mana
 {
     TYPA movie; 
     movie.nombre = nombre; 

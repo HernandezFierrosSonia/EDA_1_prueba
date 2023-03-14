@@ -3,7 +3,7 @@
 //en este código no lee
 TYPA
 {
-    char *nombre;
+    char *nombre;//así se declara un string
     char *genero;
     short year;
     short numDirectores;
@@ -28,8 +28,9 @@ int main()
     return 0;
 }
   
-TYPA llenarDatosPelicula(char *nombre, char *genero, short year, short numDirectores, char *directores[10])
-{
+TYPA llenarDatosPelicula(char *nombre, char *genero, short year, short numDirectores, char *directores[10])//entiendele bien a esto mana
+{/*¿Por que los recibió como arreglos a algunos? Entiendo a directores, eso es una dirección, pero Harry Potter no es una dirección
+Ha ya, por que son string, char *nombre="Harry Potter"   es totalmente válido*/
     TYPA movie;//me gustaban más los pauntadores
     //aquí por ejemplo creó una variable igual a la que tiene que devolver, al igual que el otro código
     movie.nombre = nombre; 
