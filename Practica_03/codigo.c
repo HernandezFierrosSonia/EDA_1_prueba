@@ -4,19 +4,13 @@
 Puedes crear un estruct en el main(uno para cada pieza) con la asignación de una función a donde envías los datos, incluyendo las coordenadas, y así 
 la función es del mismo tipo estruct*/
 
-typedef struct
+struct bishop
 {
     int x;
     int y;
     char tablero[8][8];//se me hace muy feo crear un arreglo por cada struct, es más se van a crear muchisismos, aunque no sé explicar por qué
 
-}bishop;// caballo
-
-void caballo(struct bishop* );
-void alfil(struct pawn *);
-void torre(struct rook* );
-void reina(struct queen*);
-void rey(struct king* );
+};// caballo
 
 struct pawn //alfil
 {
@@ -34,13 +28,13 @@ struct rook //torre
     
 };
 
-typedef struct
+struct queen
 {
     int x;
     int y;
     char tablero[8][8];
 
-}queen;
+};
 
 struct king
 {
@@ -48,6 +42,12 @@ struct king
     int y;
     char tablero[8][8];
 };
+
+void caballo(struct bishop* );
+void alfil(struct pawn *);
+void torre(struct rook* );
+void reina(struct queen*);
+void rey(struct king* );
 
 int main()
 {
@@ -132,8 +132,7 @@ void torre(struct rook roque)//torre antiguamente conocida como roque
 {
     roque.x=1;
     roque.y=3;
-    roque.tablero={
-    'o','o','T','o','o','o','o','o',
+    roque.tablero={'o','o','T','o','o','o','o','o',
     'o','o','o','o','o','o','o','o', 
     'o','o','o','o','o','o','o','o',    
     'o','o','o','o','o','o','o','o',    
@@ -142,7 +141,6 @@ void torre(struct rook roque)//torre antiguamente conocida como roque
     'o','o','o','o','o','o','o','o',    
     'o','o','o','o','o','o','o','o',    
     };
-}
 }
 
 void reina(struct queen array[1])
