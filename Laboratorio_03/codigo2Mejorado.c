@@ -26,7 +26,7 @@ int main()
     return 0;
 }  
 
-void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta declarado que va a recibir * ya lo hace ser uno. Confirmo
+void llenarArreglo(struct pelicula arreglo [TAM])//yo no sé si por que esta declarado que va a recibir * ya lo hace ser uno, si pero solo en tipo de dato struct
 {//creo una variable movie tipo struct pelicula y la vaoy enviando el número de veces que el arreglo tenga de índice
     int i, n;
 
