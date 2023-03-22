@@ -3,19 +3,18 @@
 
 int main ()
 {
-    int *arreglo, num, cont;
+    int *arreglo, num, i;
     printf("¿Cuantos elementos tiene el conjunto?\n");
     scanf("%d",&num);
-    arreglo = (int *)calloc (num, sizeof(int));
+    arreglo=(int *)calloc(num, sizeof(int));//calloc() inicializa todos los bytes del bloque de memoria asignada a cero.
     if (arreglo!=NULL) 
     {
-        printf("Vector reservado:\n\t["); 
-        for (cont=0 ; cont<num ; cont++)
-        {
-            printf("\t%d",*(arreglo+cont));//%x da lo mismo
-        }
-        printf("\t]\n");
-        printf("Se libera el espacio reservado.\n");
+        printf("Vector reservado:[ "); 
+        for (i=0 ; i<num ; i++)
+            printf(" %d",*(arreglo+i));//%x da lo mismo//el asterisco es la parte que te garantiza que se va a imprimir un número, lo que esta adentro es una dirección
+
+        printf(" ]");
+        printf("\nSe libera el espacio reservado.\n");
         free(arreglo);
     }
     return 0;

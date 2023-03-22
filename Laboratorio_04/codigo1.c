@@ -3,19 +3,16 @@
 
 int main ()
 {
-    int *arreglo, num, cont;
+    int *arreglo, num, i;
     printf("¿Cuantos elementos tiene el conjunto?\n");
     scanf("%d",&num);
-    arreglo = (int *)malloc (num * sizeof(int));//* es una operacio¡òn aritmetica
-    if (arreglo!=NULL) 
+    arreglo=(int *)malloc(num * sizeof(int));//* es una operación aritmética
+    if (arreglo!=NULL) //NULL es como no existir?
     {
-        printf("Vector reservado:\n\t["); 
-        for (cont=0 ; cont<num ; cont++)
-        {
-            printf("\t%d",*(arreglo+cont));//¿por què imprime cero? 
-        }
-        printf("\t]\n");
-        printf("Se libera el espacio reservado.\n");
+        for (i=0 ; i<num ; i++)
+            printf("%d ",*(arreglo+i));//¿por qué imprime cero? malloc() no inicializa, pues los arreglos normales no incializan y aun así imprimen cero también
+
+        printf("\nA continuación se libera el espacio reservado.\n");
         free(arreglo);
     }
     return 0;
