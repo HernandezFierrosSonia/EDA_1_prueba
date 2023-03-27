@@ -14,6 +14,8 @@ int main ()
 
         printf("\nA continuación se libera el espacio reservado.\n");
         free(arreglo);
+        if(arreglo==NULL)//esto lo puse yo, pero no funciona
+            printf("Hola");
     }
     return 0;
 }

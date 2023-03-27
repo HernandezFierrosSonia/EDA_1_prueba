@@ -5,7 +5,7 @@
 // Una estructura que representa una cola
 struct Queue {
 	int front, rear, size;
-	unsigned capacity;
+	unsigned capacity;//solo puede ser cero o pa' arriba
 	int* array;
 };
 
