@@ -1,4 +1,4 @@
-#include <limits.h>
+//#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,7 +15,7 @@ struct Queue {
 // cola como 0
 struct Queue* createQueue(int capacity)
 {
-	struct Queue* queue=(struct Queue*)malloc(sizeof(struct Queue));
+	struct Queue* queue=(struct Queue*)malloc(sizeof(struct Queue));//solo creamos uno, así que chiste, además es int, ya quisiera ver char 2d
 	queue->capacity=capacity;
 	queue->front=queue->size=0;//iniciamos dos de una vez :)
 
@@ -44,8 +44,9 @@ int isEmpty(struct Queue* queue)
 // Cambia la parte trasera y el tamano.
 void enqueue(struct Queue* queue, int item)//le estoy enviando la dirección de una estructura cola
 {
-	if (isFull(queue))//si devuelve true/verdadero si entra
-		return;//que curioso regresa, eso me sirve, creo.
+	if(isFull(queue))//si devuelve true/verdadero si entra
+		return;//que curioso regresa, eso me sirve, creo, solo toma en cuenta que es por que la función es void, es bastante inútil(por que ¿porque querrías devolver algo cuando la función no devuelve nada?), pero te evita poner un else
+		//¿por qué no imprime un mensaje de aviso?
 	queue->rear=(queue->rear+1) % queue->capacity;//rear=5%5=0//rear=1%5=1  ah caray!
 	queue->array[queue->rear]=item;//array[0]=21;//array[1]=2;
 	queue->size+=1;//queue->size+1;//size=0+1;//size=2//
@@ -57,7 +58,7 @@ void enqueue(struct Queue* queue, int item)//le estoy enviando la dirección de 
 int dequeue(struct Queue* queue)
 {
 	if (isEmpty(queue))
-		return INT_MIN;//¿que es eso? puedo quitarselo?
+		return 3;//¿por qué no imprime un mensaje de aviso?
 	int item=queue->array[queue->front];//array[0] sabemos que es 21//array[1]=2//
 	queue->front=(queue->front + 1) % queue->capacity;//front=0+1%5=1//front=1+1%5=2;
 	queue->size-=1;//queue->size - 1;//size=1//size=0;es que es cero por que nadamás lo imaginé hasta edad de gatito
@@ -68,7 +69,7 @@ int dequeue(struct Queue* queue)
 int front(struct Queue* queue)
 {
 	if (isEmpty(queue))
-		return INT_MIN;
+		return 20;
 	return queue->array[queue->front];
 }
 
@@ -76,14 +77,14 @@ int front(struct Queue* queue)
 int rear(struct Queue* queue)
 {
 	if (isEmpty(queue))
-		return INT_MIN;//què regresa??nada namás se sale de esta función
-	return queue->array[queue->rear];//array[]
+		return 90;//què regresa?? nada, namás se sale de esta función
+	return queue->array[queue->rear];
 }
 
 // Funcion principal para probar las operaciones.
 int main()//first in, first out
 {
-	struct Queue* queue = createQueue(5);//nos regresa la colita ya creada
+	struct Queue* queue=createQueue(5);//nos regresa la colita ya creada
 
 	enqueue(queue, 21);//como que ya me voy acostumbrando a que si no escribo el * de un apuntador estoy dando la dirección del apuntador
 	enqueue(queue, 2);
@@ -93,7 +94,9 @@ int main()//first in, first out
 
 	printf("%d eliminado de la cola\n", dequeue(queue));
 	printf("El elemento de enfrente es: %d\n", front(queue));
-	printf("El elemento de al final es: %d\n", rear(queue));//rear es ccoo
+	printf("El elemento de al final es: %d\n", rear(queue));
 
 	return 0;
 }
+//nunca liberamos memoria :c. Usamos dos veces malloc()
+//nostros vamos emtiendo por rear, y vamos sacando por front, size es el que se va moviendo

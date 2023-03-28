@@ -13,8 +13,7 @@ struct Queue {
 // cola como 0
 struct Queue* createQueue(unsigned capacity)
 {
-	struct Queue* queue
-		= (struct Queue*)malloc(sizeof(struct Queue));
+	struct Queue* queue=(struct Queue*)malloc(sizeof(struct Queue));
 	queue->capacity = capacity;
 	queue->front = queue->size = 0;
 
