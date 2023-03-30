@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 // Una estructura que representa una cola
-struct Queue {
+struct Queue 
+{
 	int front;//creo que es head
     int rear;//creo que es tail
     int size;
@@ -51,6 +52,7 @@ void enqueue(struct Queue* queue, int item)//le estoy enviando la dirección de 
 	queue->array[queue->rear]=item;//array[0]=21;//array[1]=2;//array[2]=56;
 	queue->size+=1;//queue->size+1;//++queue->size;//size=0+1;//size=2//size=3
 	printf("%d agregado a la cola\n", item);
+	//solo para dejar claro que rear esta al inicio
 }
 
 // Función para eliminar un elemento de la cola.
@@ -63,6 +65,7 @@ int dequeue(struct Queue* queue)
 	queue->front=(queue->front+1) % queue->capacity;//front=0+1%5=1//front=1+1%5=2;//front=2+1%5=3;
 	queue->size-=1;//queue->size - 1;//size=3//size=2;//size=1
 	return item;
+	//solo para dejar claro que front esta al final de la cola
 }
 
 // Función para obtener el frente de la cola.
@@ -110,3 +113,5 @@ int main()//first in, first out
 //nunca liberamos memoria :c. Usamos dos veces malloc()
 //nostros vamos emtiendo por rear, y vamos sacando por front, size es el que se va moviendo
 //is full and is empty utilizan size 
+//cola es la única que crea un int para devolver
+//solo en cola no modifica el valor nadamas +1 ó -1

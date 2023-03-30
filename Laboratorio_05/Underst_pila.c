@@ -80,3 +80,7 @@ int main()
 }
 //Nunca liberamos memoria :c. Por cierto, solo usamos dos veces malloc
 //nosotros vamos metiendo en top y vamos sacando por top
+//solo en pila hace ++ y --
+
+
+//pa' entender mejor estas estructuras llineales dinámicas, tanto cola y pila cuando insertan, esa función es void. Cuando eliminan, es una función int.
