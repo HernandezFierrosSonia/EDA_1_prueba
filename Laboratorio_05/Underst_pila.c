@@ -24,13 +24,14 @@ struct Stack* createStack(int capacity)
 // La pila esta llena cuando el tope es igual al ùltimo indice
 int isFull(struct Stack* stack)
 {
-	return stack->top==stack->capacity-1;//es booleano
+	return stack->top==stack->capacity-1;//es booleano//también podía ser stack->top+1==stack->capacity
+	//según yo capacity no cambió
 }
 
 // La pila esta vacia cuando el tope es igual a -1
 int isEmpty(struct Stack* stack)
 {
-	return stack->top==-1;//booleano false or true
+	return stack->top==(-1);//booleano false or true
 }
 
 // Función para agregar un elemento a la pila. Incrementa el tope en 1

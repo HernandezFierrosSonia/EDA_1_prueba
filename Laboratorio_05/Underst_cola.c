@@ -77,7 +77,7 @@ int front(struct Queue* queue)
 }
 
 // Función para obtener la parte trasera de la cola
-int rear(struct Queue* queue)
+int rear(struct Queue* queue)//aquí es muy curioso, por que antes pensaba que el tipo de dato que regresas debe ser cel mismo tipo que los parámetros
 {
 	if (isEmpty(queue))
 		return 90;//???
