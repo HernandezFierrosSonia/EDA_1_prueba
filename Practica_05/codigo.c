@@ -21,7 +21,7 @@ struct Stack* createStack(int capacity)
 {
 	struct Stack* stack=(struct Stack*)malloc(1*sizeof(struct Stack));
 	stack->capacity=capacity;
-	stack->top=-1;//lo que pasa es que en push lo primero que se hace es sumar así con ++ (aqunque no esta muy obvio)
+	stack->top=-1;
 	stack->array=(int*)malloc(stack->capacity * sizeof(int));
 	return stack;
 }
@@ -144,6 +144,5 @@ int main()
                 printf("\nOpción inválida");
         }
     }
-
 	return 0;
 }
