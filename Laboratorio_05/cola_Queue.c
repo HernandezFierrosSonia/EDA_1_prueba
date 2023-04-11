@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 // Una estructura que representa una cola
-struct Queue {
+struct Queue
+{
 	int front, rear, size;
 	unsigned capacity;//solo puede ser cero o pa' arriba
 	int* array;

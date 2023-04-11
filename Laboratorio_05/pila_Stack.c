@@ -13,10 +13,10 @@ struct Stack {
 // pila como 0
 struct Stack* createStack(unsigned capacity)
 {
-	struct Stack* stack = (struct Stack*)malloc(sizeof(struct Stack));//es como un arreglo de 1//malloc no inicia a 20
-	stack->capacity = capacity;
-	stack->top = -1;
-	stack->array = (int*)malloc(stack->capacity * sizeof(int));
+	struct Stack* stack=(struct Stack*)malloc(sizeof(struct Stack));//es como un arreglo de 1//malloc no inicia a 20
+	stack->capacity=capacity;
+	stack->top=-1;
+	stack->array=(int*)malloc(stack->capacity * sizeof(int));
 	return stack;
 }
 
