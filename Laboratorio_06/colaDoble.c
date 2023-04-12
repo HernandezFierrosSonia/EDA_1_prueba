@@ -16,7 +16,7 @@ void addFront(int *arr, int item, int *pfront, int *prear)
 
     if (*pfront==0 && *prear==MAX-1) 
     {
-        printf("\nDeque esta llena.\n");
+        printf("\nDeque está llena.\n");
         return;
     }
 

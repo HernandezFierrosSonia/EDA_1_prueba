@@ -49,7 +49,7 @@ void rey(int , int , char (*)[8]);
 int main()
 {
     int opcion;
-                    int i,j;
+    int i,j;
     for(;;)
     {
         printf("Elige una opción:\n");
