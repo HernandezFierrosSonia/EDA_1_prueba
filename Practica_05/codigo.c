@@ -93,7 +93,7 @@ void enqueue(struct Queue* queue, int item)
 	printf("\nSe agregó a la cola el elemento %d\n", item);
 }
 
-int rear(struct Queue* queue)//es int pero regres bool
+int rear(struct Queue* queue)
 {
 	if (isEmptyCola(queue))
 		return 90;
