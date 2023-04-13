@@ -1,5 +1,4 @@
 // Implementacion de una cola doble en C
-
 #include <stdio.h>
 #define MAX 10
 
@@ -39,7 +38,6 @@ es que recibe el arreglo como si fuera entero no como una dirección, pese a que
     {
         c=count(arr);
         k=*rear+1;//rear no va a cambiar
-        printf("Cangrejo equivocado: %d\n", c);
 
         for(i=1; i<=c; i++)//dentro de las instrucciones de for no se ocupa i.
         //era más bonito cuando rear==MAX-1 en la función de enqueueRear
@@ -88,19 +86,16 @@ void enqueueRear(int *arr, int item, int *front, int *rear)//aun me es curioso q
             //eliminé algo oficial aquí
             if(i==MAX-1)//rear ya está ahí, lo sé por el if anterior
             //oie, nunca va a estrar aquí, por que i no llega al valor max-1 es decir 9, llega a uno menos, <9
-                arr[i]=0;
+                arr[i]=0;//eliminamos a nuestra manera, aunque este no es dequeue, en realidad estamos limpiando este espacio, voy a ver más tarde si en estas instrucciones podía insertar el item
             else
                 arr[i]=arr[i+1];//no modifica i//recorremos todo el arreglo un espacio pa atrás
                 //el 1 tiene lo que tiene el 2, el 2 tiene lo que tiene el 3,...
         }
         (*front)--;//son índices recuerda
-        (*rear)--;/*no es tan inútil como parece, no puedo quitar esta linea, 
-        por que la que esta 7 líneas debajo no la puedo modificar, 
-        y como afuerzas tengo que pasar por ahí el outcome/resultado no va a ser lo mismo, 
-        ¿por que no puedo quitarla? por que no puedo poner un else, hay código que se repetiría, el cual es justo el codigo de 5 líneas abajo */
+        (*rear)--;//con la finalidad de que rear no se modifique
     }
     
-    //el siguiente pedazo de código se ubiera repetido en else y en if, si es que ubiera puesto un else
+    //el siguiente pedaso de código se ubiera repetido en else y en if, si es que ubiera puesto un else
     (*rear)++;
     arr[*rear]=item;
 }
@@ -178,34 +173,36 @@ int main()
 
     front=rear=-1;
 
-    for (i=0; i<MAX; i++)
+    for (i=0; i<MAX; i++)//de por si ya tienen 0
         arreglo[i]=0;
 
     enqueueRear(arreglo, 50, &front, &rear);//está primera vez no importa si se usa enqueueRear o enqueueFront//arreglo así como está escrito, es una dirección.
-    enqueueFront(arreglo, 120, &front, &rear);
-    enqueueRear(arreglo, 110, &front, &rear);
-    enqueueFront(arreglo, 50, &front, &rear);
     enqueueRear(arreglo, 60, &front, &rear);
+    enqueueRear(arreglo, 110, &front, &rear);
+    enqueueRear(arreglo, 35, &front, &rear);
+    enqueueRear(arreglo, 130, &front, &rear);
+    enqueueFront(arreglo, 120, &front, &rear);
+    enqueueFront(arreglo, 95, &front, &rear);
     enqueueFront(arreglo, 80, &front, &rear);
+    enqueueFront(arreglo, 90, &front, &rear);
+    enqueueFront(arreglo, 45, &front, &rear);
 
     printf("\nElementos en la doble queue (deque): ");
     display(arreglo);
 
     i=dequeueFront(arreglo, &front, &rear);//reutilizamos la variable i
     printf("\nElemento eliminado: %d", i);
+    printf("\nElemento eliminado: %d", dequeueFront(arreglo, &front, &rear));
+    printf("\nElemento eliminado: %d", dequeueFront(arreglo, &front, &rear));
     printf("\nElementos en la doble queue (deque) después de borrar:");//dequeue es lo mismo que double queue
     display(arreglo);
 
-    enqueueRear(arreglo, 160, &front, &rear);
-    enqueueFront(arreglo, 70, &front, &rear);
-
+    enqueueRear(arreglo, 160, &front, &rear);//cuando rear es 9
     printf("\nElementos en la doble queue (deque) después de anadir:");
     display(arreglo);
 
-    i=dequeueRear(arreglo, &front, &rear);
-    printf("\nElemento eliminado: %d", i);
-
-    printf("\nElementos en la doble queue (deque) después de eliminar: ");
+    enqueueFront(arreglo, 79, &front, &rear);//cuando rear es 9, no recorre
+    printf("\nElementos en la doble queue (deque) después de anadir:");
     display(arreglo);
 
     n=count(arreglo);
@@ -215,4 +212,5 @@ int main()
 /*
 Los dequeue no recorre el arreglo
 Los enqueue recorren el arreglo un espacio, enqueueRear hacia la derecha y enqueueFront hacia la izquierda
-Escensialmente yo no compararía la cola doble con la cola circular*/
+Escensialmente yo no compararía la cola doble con la cola circular
+Ambas dequeue devuelven el elemento a eliminar*/
