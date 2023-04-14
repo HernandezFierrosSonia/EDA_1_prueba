@@ -52,7 +52,7 @@ void enqueueFront(char *arr, char item, int *front, int *rear)
 
 void enqueueRear(char *arr, char item, int *front, int *rear)
 {
-    int i, k;
+    int i;
 
     if(*front==0 && *rear==(size_of_word-1))
     {
