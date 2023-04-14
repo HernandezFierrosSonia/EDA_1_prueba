@@ -61,7 +61,7 @@ void enqueueRear(char *arr, char item, int *front, int *rear)
 //cuando rear mete, si es que aplica primero recorre todo el arreglo un espacio hacia atrás
 //enqueue rear siempre agrega hacia la derecha, y nunca rebasa de 9 para pasarse a 0
 {
-    int i, k;
+    int i;
 
     if(*front==0 && *rear==(size_of_word-1))
     {
