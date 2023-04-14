@@ -195,6 +195,8 @@ int main()
     int i;
     int front, rear;
 
+	front=rear=-1;
+	
     for(i=0;i<MAX;++i)
         palabra[i]=' ';
 
