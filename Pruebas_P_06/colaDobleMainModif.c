@@ -61,7 +61,7 @@ void enqueueRear(int *arr, int item, int *front, int *rear)//aun me es curioso q
 //cuando rear mete, si es que aplica primero recorre todo el arreglo un espacio hacia atrás
 //enqueue rear siempre agrega hacia la derecha, y nunca rebasa de 9 para pasarse a 0
 {
-    int i, k;
+    int i;
 
     if(*front==0 && *rear==MAX-1)//no te confundas, es la mezcla de las dos condiciones lo que ocasiona que este llena, no solo una condición
     {
