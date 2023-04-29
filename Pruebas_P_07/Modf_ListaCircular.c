@@ -9,7 +9,8 @@ int contador=0;//si lo modificas en una función, lo modificas para todo.
 struct Node//verás que se vuelve a llamar a sí misma
 {//bro nunca terminare de entender estructuras, me acuerdo que en ajedrez ni podía usarlas normal
     int data;
-    struct Node* next;/*por qué no se hace infinito? 
+    struct Node* next;//esto es una referencia(enlace)/apuntador al siguiente nodo de la lista
+    /*por qué no se hace infinito? 
     Pienso que no es como una función dentro de una función, no creo que esto sea recursividad
     , pero weno es una acción que crea más acciones infinitas*/
 };
@@ -189,6 +190,8 @@ int main()
 {
     struct Node* last=NULL;/*esta línea es crear un apuntador que guarda la dirección de un tipo de dato como struct Node
     Lo que se me hace curioso es que no quiero la dirección de la variable, por algo la estoy modificando a NULL*/
+    //Voy descubriendo que no hay función para crear un nodo
+    //a este nodo podiamos haberle creado su memoria aquí, ¿te preguntabas por que era pointet? por que es memoria dinámica, las variables son pointer
 
     contador+=1;
 
