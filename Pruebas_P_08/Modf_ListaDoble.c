@@ -6,7 +6,7 @@
 struct Node 
 {
     int data;
-    struct Node* next;
+    struct Node* next;//mira un Node, solo es el nombre, pues es después de todo es una estructura, aunque no cualquiera, como que se manda a llamar a si misma para crear la misma estructura
     struct Node* prev;
 };
 
@@ -100,7 +100,7 @@ void insertEnd(struct Node** head, int data)
 }
 
 //Eliminar un nodo de la lista doblemente ligada
-void deleteNode(struct Node** head, struct Node* del_node) 
+void deleteNode(struct Node** head, struct Node* del_node)
 {
     //Si cabeza o del es null, no se puede borrar
     if(*head == NULL || del_node == NULL)
@@ -141,7 +141,7 @@ void displayList(struct Node* node)
 int main() 
 {
     //Se inicializa un nodo vacío
-    struct Node* head=NULL;
+    struct Node* head=NULL;//no entiendo pa' que ponerle null, si de todas formas este apuntador lo voy a utilizar en memoria dinámica
 
     insertEnd(&head, 5);
     insertFront(&head, 1);

@@ -3,9 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int contador=0;//si lo modificas en una función, lo modificas para todo.
-//lo cree para ver cuantas veces creo nodos o apuntadores de este tipo
-
 struct Node//verás que se vuelve a llamar a sí misma
 {//bro nunca terminare de entender estructuras, me acuerdo que en ajedrez ni podía usarlas normal
     int data;
@@ -15,25 +12,25 @@ struct Node//verás que se vuelve a llamar a sí misma
     , pero weno es una acción que crea más acciones infinitas*/
 };
 
-struct Node* addToEmpty(struct Node* last, int data) 
+struct Node* addToEmpty(struct Node* last, int data)//es una función muy importante
 {
-    if(last!=NULL) return last;
+    if(last!=NULL) return last;//por qué es tan importante que esté igualada a NULL?
     
     //asignar memoria al nuevo nodo
-    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
-    contador+=1;
+    struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));//nunca me voy a aprender la sintaxis de malloc
 
     //se asigna dato al nuevo modo
-    newNode->data=data;
+    newNode->data=data;//curioso es que no hay problema si una variable se llama igual que el miembro
 
     //se asigna como last al nuevo modo
-    last=newNode;
+    last=newNode;//tanto last como newNode son nodos, es como que last guarda una copia
 
     //se crea enlace para si mismo
-    last->next=last;
+    last->next=last;//ah caray, newNode no es el protagonista, pero...¿por qué crear a newNode entonces? hasta lo que voy entendiendo no es necesario, ¿por qué no simplemente crearle memoria dinámica a last?
 
-    return last;
-}
+    return last;//regresamos una dirección, la de newNode(por que eso guarda last) y así mismo con la característica que solo tiene last(no la tiene newNode) que es hacia dónde apunta next//jeje en mi opinión más complejo de lo necesario
+    //estaba más chido si la función recibia la dirección de last y ya de ahí obteniamos lo que queriamos, es más, ni hubieramos tenido que regresar algo
+}//fijate que al final de la función no queda rastro del newNode, me refiero al nombre, creo que no recordamos a los nodos por sus nombres
 
 //Agregar nodo por el frente
 struct Node* addFront(struct Node* last, int data)
@@ -43,7 +40,6 @@ struct Node* addFront(struct Node* last, int data)
 
     //Se asigna memoria al nuevo nodo
     struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
-    contador+=1;
 
     //Se agrega dato al nuevo nodo
     newNode->data=data;
@@ -61,25 +57,25 @@ struct Node* addFront(struct Node* last, int data)
 struct Node* addEnd(struct Node* last, int data) 
 {
     //Se revisa si el nodo está vacío
-    if(last==NULL) return addToEmpty(last, data); 
+    if(last==NULL) return addToEmpty(last, data); //pos qué no ya vale algo last ahí en el main? lee bien sonia, jaja, me espantas, dice ==
+    //literal la línea anterior solo se va a ajecutar cuando el programador se equivoque y ponga un addEnd antes de un addToEmpty, este tipo de funciones se me hacen bien inútiles, programamos para cuando el usuario se equivoca
 
     //Se asigna memoria al nuevo nodo
     struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
-    contador+=1;
-
+    
     //Se agrega dato al nuevo nodo
     newNode->data=data;
 
     //Se almacena la direción del nodo cabeza al siguiente del nuevo nodo
-    newNode->next=last->next;
+    newNode->next=last->next;//es por que agregamos al final//con está línea concluimos que last siempre va a estar al final/derecha, a diferencia de head
 
     //Se apunta al actual último nodo al nuevo nodo
-    last->next=newNode;
+    last->next=newNode;//yo sé que ya lo sabes, pero los next apuntan a nodos, aunque cuando veas holis->next->next ¿es un next que apunta a otro next? no, yo no lo veo así, yo lo veo como el next del (next de holis)
 
     //Se hace al nuevo nodo como el último nodo
     last=newNode;
 
-    return last;
+    return last;//aquí si entiendo que regresas al nuevo last
 }
 
 //Insertar nodo después de un nodo específico
@@ -89,7 +85,6 @@ struct Node* addAfter(struct Node* last, int data, int item)
     if(last==NULL) return NULL;//mira esto es muy útil cuando quieres terminar una función, pero no puedes devolver algo válido
 
     struct Node *newNode, *p; 
-    contador+=2;
 
     p=last->next;
 
@@ -123,7 +118,7 @@ struct Node* addAfter(struct Node* last, int data, int item)
 }
 
 //Borrar un nodo
-void deleteNode(struct Node** last, int key) 
+void deleteNode(struct Node** last, int key)//es el único que tiene un **
 {
     //Si la lista ligada está vacía
     if(*last==NULL) return;
@@ -137,7 +132,6 @@ void deleteNode(struct Node** last, int key)
     }
 
     struct Node *temp=*last, *d;
-    contador+=2;
 
     //Si se va a eliminar el último
     if((*last)->data==key)
@@ -166,10 +160,10 @@ void deleteNode(struct Node** last, int key)
     }
 }
 
+//creo que pa' imprimir la lista
 void traverse(struct Node* last) 
 {
     struct Node* p;
-    contador+=1;
 
     if(last==NULL)
     {
@@ -191,25 +185,39 @@ int main()
     struct Node* last=NULL;/*esta línea es crear un apuntador que guarda la dirección de un tipo de dato como struct Node
     Lo que se me hace curioso es que no quiero la dirección de la variable, por algo la estoy modificando a NULL*/
     //Voy descubriendo que no hay función para crear un nodo
-    //a este nodo podiamos haberle creado su memoria aquí, ¿te preguntabas por que era pointet? por que es memoria dinámica, las variables son pointer
+    //a este nodo podiamos haberle creado su memoria aquí, ¿te preguntabas por que era pointer? por que es memoria dinámica, las variables son pointer
+    //segpun yo era lo mismo que last=NULL;
 
-    contador+=1;
+    /*muy interesante a last no se le crea memoria dinámica, el addToEmpty le crea memoria dinámica al newNode, pero es
+    curioso que cuando last=newNode en esa función pero a last no le creamos memoria dinámica*/
 
-    last=addToEmpty(last, 6);
-    last=addEnd(last, 8);
-    last=addFront(last, 2);
+    last=addToEmpty(last, 2);/*¿lo debemos aplicar una sola vez a fuerzas? es que supongo que todos los add crean un newNode*/
+    /*¿que es last? debe de ser una dirección, pero para esta primera vez la dirección es NULL, entonces enviamos NULL, mejor dicho, enviamos la dirección NULL, 
+    por que eso es lo que recibe la función, una dirección*/
+    //last ahora vale una dirección, dicho de otra forma el apuntador last vale una dirección
+
+    last=addEnd(last, 20);/*¿cuál es la finalidad de last? sabes es bien curioso pero la única forma de 
+    llegar a un nodo es por un único nodo(el cual es last), así que por eso siempre tenemos presente a last, por que p/e
+    para llegar al primer nodo de la lista utilizaré last, para llegar a un nodo en medio de la lista utilizaré last,
+    y es que como tal lista no es, necesito de nodos (empezando por last) para llegar a otros nodos para llegar a otros nodos*/
+    last=addEnd(last, 22);
+    last=addEnd(last, 3);
+
+    last=addFront(last, 19);
+    last=addFront(last, 55);
+    last=addFront(last, 56);
 
     last=addAfter(last, 10, 2);
+    last=addAfter(last, 17, 3);//el item es lo que tiene que buscar, no es una posición, supongo que es lógico pues no es un arreglo
+    last=addAfter(last, 1, 2);
 
     traverse(last);
 
-    deleteNode(&last, 8);
-
-    printf("\n");
+    deleteNode(&last, 8);//enviamos la dirección del apuntador
 
     traverse(last);
-
-    printf("\nContador: %d\n", contador);//Me imprime que 10
 
     return 0;
 }
+//antes no entendía head, ahora no entiendo last
+//todos los nodos creados se llaman newNode, hasta los que llegan a ser last, pero no nos importa su nombre por que no los utilizamos por su nombre si no por enlaces(next) de los nodos(empezando por last)
