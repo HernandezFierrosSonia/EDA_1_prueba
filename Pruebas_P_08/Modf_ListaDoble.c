@@ -141,9 +141,9 @@ void displayList(struct Node* node)
 int main() 
 {
     //Se inicializa un nodo vacío
-    struct Node* head=NULL;//no entiendo pa' que ponerle null, si de todas formas este apuntador lo voy a utilizar en memoria dinámica
+    struct Node* head=NULL;//no entiendo pa' que ponerle null, si de todas formas este apuntador lo voy a utilizar
 
-    insertEnd(&head, 5);
+    insertEnd(&head, 5);//oki, esto va a estar díficil
     insertFront(&head, 1);
     insertFront(&head, 6);
     insertEnd(&head, 9);
@@ -161,3 +161,4 @@ int main()
 
     displayList(head);
 }
+//weno al menos aquí si se usa head
