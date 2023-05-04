@@ -203,7 +203,7 @@ int main()
     Lo que se me hace curioso es que no quiero la dirección de la variable, por algo la estoy modificando a NULL*/
     //Voy descubriendo que no hay función para crear un nodo
     //a este nodo podiamos haberle creado su memoria aquí, ¿te preguntabas por que era pointer? por que es memoria dinámica, las variables son pointer
-    //segpun yo era lo mismo que 
+    //según yo era lo mismo que 
     last=NULL;
 
     /*muy interesante a last no se le crea memoria dinámica, el addToEmpty le crea memoria dinámica al newNode, pero es
