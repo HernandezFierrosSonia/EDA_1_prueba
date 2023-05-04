@@ -128,7 +128,7 @@ struct Node* addAfter(struct Node* last, int data, int item)
 //Borrar un nodo
 void deleteNode(struct Node** lasti, int key)/*es el único que tiene un **, es que le envié &last, el cual es la dirección de un apuntador,
 es como escirbir struct Node** lasti=&last; */
-//mira manta ya investigué y es lo mismo *lasti que en otras funciones es last, solo que el profesor nos quería hacer sufrir, si no mre crees revisa el documento apuntadores_entendiendolos_con_struct_y_memDinamic
+//mira manta ya investigué y es lo mismo *lasti que en otras funciones es last, solo que el profesor nos quería hacer sufrir, si no me crees revisa el documento apuntadores_entendiendolos_con_struct_y_memDinamic
 {
     //Si la lista ligada está vacía
     if(*lasti==NULL) return;//es lo mismo que last==NULL en main y en las otras funciones
@@ -144,8 +144,8 @@ es como escirbir struct Node** lasti=&last; */
         return;//por que no puede devolver algo
     }
 
-    struct Node *temp=*lasti;//tu ve ese *lasti como last en cualquier función incluyendo main
-    struct Node *d;
+    struct Node* temp=*lasti;//tu ve ese *lasti como last en cualquier función incluyendo main
+    struct Node* d;
 
     //Si se va a eliminar el último
     if((*lasti)->data==key)
