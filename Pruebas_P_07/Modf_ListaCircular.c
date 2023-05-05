@@ -97,7 +97,8 @@ struct Node* addAfter(struct Node* last, int data, int item)
     do
     {
         if(p->data==item)//Si se encontró el elemento, se coloca el nuevo nodo después de él
-        //p->data es un entero. ¿Empezamos por el primero? ¿Por que empezamos después de primero? ¿podiamos haber empezado por en p=last; y ya en el while(p!=last)? Reespuesta: No, con lo que sugerias no ubiera funcionado por que no hubiera entrado, Todo lo que hacemos tiene a last, con last nos ubicamos, si ubieramos hecho como indicabas, es decir comenzado con p=last, ¿cómo le ubieras dicho a tu while que no tocara last, si aquí no hay prev? con while(p->next==last)
+        /*p->data es un entero. Empezamos por el primero ¿Por qué no empezamos por el último? ¿podiamos haber empezado por en p=last; y ya en el while(p!=last)? si ubiera ejecutado bien por que como es do-while, entra como last y se modifica al siguiente antes de verigicar la condición.
+        Sabes, lo de p=last->next ubiera estado bien si no fuera un do-while sino solo while(p!=last)*/
         {
             //Se asigna memoria al nuevo nodo
             newNode=(struct Node*)malloc(sizeof(struct Node));
@@ -180,7 +181,7 @@ void traverse(struct Node* last)//aquí recibo la dirección del nodo que guarda
 {
     struct Node* p;
 
-    if(last==NULL)//las es una dirección, como nota NULL y direcciones tienen una bella amistad
+    if(last==NULL)//last es una dirección, como nota NULL y direcciones tienen una bella amistad
     {
         printf("La lista está vacía");
         return;//por que no puede devolver algo

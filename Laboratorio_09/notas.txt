@@ -1,0 +1,23 @@
+
+//
+Multiparadigma
+    es versàtil
+    funciones de ensablador puede tener
+     interpretado
+     programaciòn orientado a ojetos
+     lenguaje lògico
+     estructurado
+
+compilador
+    reglas sintanticas()errores tiempo de compilaciòn
+    reglas semànrica(errores en tiempo de ejcuciòn)
+
+interprete
+     bit a bit para dar una salida
+     revisa instrucciòn por instrucciòn
+     python tiene un interprete y compilador, son independientes
+
+sintaxis de python: sangrài (identaciòn), no ; y no {} if():
+
+
+//type para saber tipo de dato  printf(type(variable))

@@ -142,14 +142,15 @@ void traverse(struct Node* last)
     printf("\n");
 }
 
-bool searchData(int value)//esta función no modifica, es como peek
-{ 
-    
-    while()
-    {
+bool searchData(struct Node **lasti, int value)//esta función no modifica, es como peek
+{//lo llamé lasti pa' que no haya confusión, pues se usa con * demás a diferencia de last en main
+    struct Node* temp;//en lugar de llamarlo p lo llamé temp de temporal
+    temp=(*lasti);
 
-    }
+    do//aquí quise hacerle diferente al addAfter, en lugar de empezar por last->next empecé por last
+    {
         return true;
+    }while(temp!=(*lasti));
     return false;
 }
 
@@ -190,7 +191,7 @@ int main()
 
     traverse(last);
 
-    resultado=searchData(valor);
+    resultado=searchData(&last, valor);
 
     if(resultado==true)
     {
