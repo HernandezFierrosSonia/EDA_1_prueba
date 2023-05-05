@@ -89,7 +89,7 @@ struct Node* addAfter(struct Node* last, int data, int item)
     //Se revisa si la lista está vacía
     if(last==NULL) return NULL;//mira esto es muy útil cuando quieres terminar una función, pero no puedes devolver algo válido
 
-    struct Node *newNode, *p;//en lugar d ep podías poner temp
+    struct Node *newNode, *p;//en lugar de p podías poner temp
 
     p=last->next;//es decir el primer nodo. por que last es como rear (confirmado)
     //last->next es un nodo, para que algo sea igual a ese nodo tiene que ser struct Node*
@@ -97,7 +97,7 @@ struct Node* addAfter(struct Node* last, int data, int item)
     do
     {
         if(p->data==item)//Si se encontró el elemento, se coloca el nuevo nodo después de él
-        //p->data es un entero. Empezamos por el primero
+        //p->data es un entero. ¿Empezamos por el primero? ¿Por que empezamos después de primero? ¿podiamos haber empezado por en p=last; y ya en el while(p!=last)? Reespuesta: No, con lo que sugerias no ubiera funcionado por que no hubiera entrado, Todo lo que hacemos tiene a last, con last nos ubicamos, si ubieramos hecho como indicabas, es decir comenzado con p=last, ¿cómo le ubieras dicho a tu while que no tocara last, si aquí no hay prev? con while(p->next==last)
         {
             //Se asigna memoria al nuevo nodo
             newNode=(struct Node*)malloc(sizeof(struct Node));

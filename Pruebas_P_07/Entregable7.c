@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct Node
 {
@@ -141,10 +142,27 @@ void traverse(struct Node* last)
     printf("\n");
 }
 
+bool searchData(int value)//esta función no modifica, es como peek
+{ 
+    
+    while()
+    {
+
+    }
+        return true;
+    return false;
+}
+
 int main() 
 {
+    int valor; 
+    bool resultado=0;
+    //printf("%d", resultado);
     struct Node* last;
     last=NULL;
+
+    printf("Bienvenido. Introduzca el valor a buscar en la lista ligada circular: ");
+    scanf("%d", &valor);
 
     last=addToEmpty(last, 2);
 
@@ -172,5 +190,17 @@ int main()
 
     traverse(last);
 
+    resultado=searchData(valor);
+
+    if(resultado==true)
+    {
+        printf("Tu valor ¡SI ESTÁ!");
+    }
+    else 
+    {
+        printf("Tu valor no está :c");
+    }
+
     return 0;
 }
+//¿puedo ocupar stdbool.h?
