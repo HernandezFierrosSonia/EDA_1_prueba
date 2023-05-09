@@ -1,3 +1,4 @@
+//doble
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -7,6 +8,7 @@ struct Node
     struct Node* next;
     struct Node* prev;
 };
+
 
 void insertFront(struct Node** head, int data) 
 {
@@ -46,7 +48,7 @@ void insertAfter(struct Node* prev_node, int data)
         newNode->next->prev=newNode;
 }
 
-void insertEnd(struct Node** head, int data)
+void insertEnd(struct Node** head, int data)//este contiene a insertToEmpty
 {
     struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
 
@@ -114,7 +116,17 @@ int main()
 {
     struct Node* head=NULL;
 
-    insertEnd(&head, 5);
+    insertEnd(&head, 5);/*que curioso, nuestras funciones son void, enviamos &head y no lo recibimos
+    la diferencia es esta:
+    void()
+    {
+
+    }
+    void()
+    {
+
+    }
+    */
     insertFront(&head, 1);
     insertFront(&head, 6);
     insertEnd(&head, 9);
@@ -144,3 +156,19 @@ int main()
 
     displayList(head);
 }
+
+/*menú
+int opcion;
+printf("Bienvenido a realizar una operación\n");
+printf("Ingresa 1 para insertar");
+printf("Ingresa 2 para eliminar");
+scanf("%d", &opcion);
+
+switch(opcion)
+    case 1:
+        printf("");
+        break;
+    case2:
+        printf("");
+        break;
+*/

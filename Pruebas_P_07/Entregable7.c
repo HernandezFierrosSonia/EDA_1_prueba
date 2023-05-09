@@ -1,3 +1,4 @@
+//circular
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -149,7 +150,11 @@ bool searchData(struct Node **lasti, int value)//esta función no modifica, es c
 
     do//aquí quise hacerle diferente al addAfter, en lugar de empezar por last->next empecé por last
     {
-        return true;
+        if((temp->data)==value)
+        {
+            return true;
+        }
+        temp=temp->next;
     }while(temp!=(*lasti));
     return false;
 }
@@ -161,7 +166,11 @@ bool search(struct Node* last, int value)
 
     do//aquí quise hacerle diferente al addAfter, en lugar de empezar por last->next empecé por last
     {
-        return true;
+        if((temp->data)==value)
+        {
+            return true;
+        }
+        temp=temp->next;
     }while(temp!=last);
     return false;   
 }
@@ -208,69 +217,26 @@ int main()
 
     if(resultado1==true)
     {
-        printf("searchData. Tu valor ¡SI ESTÁ!");
+        printf("searchData. Tu valor ¡SI ESTÁ!\n");
     }
     else 
     {
-        printf("searchData. Tu valor no está :c");
+        printf("searchData. Tu valor no está :c\n");
     }
-    /////////////////////////////////////////
-    resultado2=search(last, valor);/*estoy enviando last, 
-    el cual es igual a una dirección. last debe tener la dirección de una varible de su mismo tipo, es decir struct Node, 
-    aunque es bien curioso, es como hacer 
-    int *p=jgwduk;
-    int *pointer=g2sqw;
-    p=pointer;
-
-    solo que es 
-
-    struct Nodo *p=jgwduk;
-    struct Nodo *pointer=g2sqw;//digamos que en este, su memoria g2sqw, es por que es dinámico, y que de no ahber sido a sí, no sería *, weno no sería apuntador, solo sería sruct Nodo. Pero que gracias a que es memoria dinámica(apuntador) puede ser comparado con last. Es digamos una serendipia, algo conveniente pues.
-    p=pointer;
-
-    ¿last tiene las propiedades de los nodos(data, next y prev)?
-    Es correcto decir que last es un nodo, pero entender por qué es raro, pues no se iniciliada como los newNode, se inicializa robando la información de los nweNode,
-    last es un nodo que chupa la información(prev, next y data) del nodo que más le guste (ACOSADORA!),
-    last es un nodo cuya información(prev, next y data) varía constantemente. 
-    Last se hace nodo al alimentarse de la dirección de otros nodos, ¿la dirección de newNode (así se usa sin *) es esecialmente su información(data, next y prev)? quien sabe, 
-    ¿cómo es que teniendo la dirección de un nodo tengo su información? lo que pasa es que se hace complejo explicarlo por que no es como imprimir solo un número, aquí hay además enlaces.
-    Por que para mi se me hace fácil decir que en el siguiente ejemplo last tiene el valor(su única información es un entero, no data o enlaces) de newNode
-        int *last;
-        int *newNode=(int)malloc(1*sizeof(int*));
-        last=newNode;
-
-        *newNode=7;
-        printf("PRESTA ATENCIÓN %d\n", *last);//imprime 7//last tiene la información de newNode
-
-        *last=27//extra, con last se puede modificar el valor de newNode
-        printf("%d\n", *newNode);//imprime 27
-
     
-    Lo que pasa es que empieza siendo un apuntador, pero los nodos son apuntadores también, 
-    lo curioso es que ambos son de tipo struct, la única diferencia es que los nuevos nodos son 
-    dinámicos y last y head no son dinámicos, supongo que por que su existencia no hace falta que a lo largo del programa se eliminen.
-    
-    Los apuntadores head y last al ser struct Node, tienen las mismas propiedades que los nuevos nodos, así que técnicamente last si es un nodo.
-    Lo que pasa es que su información(next o prev) cambia constantemente a lo largo del programa. Lo que pasa es que nos confunde que algo sea node y sea un tipo de dato, por que es lo mismo.
-    Ve a last como un apuntador de tipo de dato(tipo de dato:struct Node) en lugar de como un nodo, lo digo por que los nuevos nodos también son apuntadores, pero son apuntadores por que son memoria dinámica,
-    podriamos haberlo hecho sin memoria dinámica y los nodos no sería apunatdores(*). 
-    
-    Recuerda, struct1=struct2 es correcto, no puedes comparar estructuras(==), nada que ver pero los miembros si se pueden comparar(==) e igualar(=). 
-    Así que last=newNode, son dos estructuras, la estructura last toma el valor de la estructura newNode. Casualmente las dos son apuntadores, 
-    direcciónQueGuardaElNodoLast=direcciónDenewNode; por que estas ocupando apuntadores sin su *, apuntador sin su asterísco es un dirección ó guardar una dirección.
-    
-    */
-
+   /////////////////////////////////////////
+    resultado2=search(last, valor);
     if(resultado2==true)
     {
-        printf("search. Tu valor ¡SI ESTÁ!");
+        printf("search. Tu valor ¡SI ESTÁ!\n");
     }
     else 
     {
-        printf("search. Tu valor no está :c");
+        printf("search. Tu valor no está :c\n");
     }
     
 
     return 0;
 }
 //¿puedo ocupar stdbool.h?
+//al final si lo dejé como add en las lista circular e insert en la doble

@@ -12,7 +12,7 @@ struct Node
 tenemos un miembro (más específicamente una variable apuntadora) del mismo tipo que el current/actual nodo*/
 
 //Insertar nodo por el frente
-void insertFront(struct Node** head, int data) 
+void insertFront(struct Node** head, int data)//Esta fucnión sirve pa' cuando la lista esta vacía
 {
     //Asignar memoria al nuevo nodo
     struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));
@@ -22,12 +22,13 @@ void insertFront(struct Node** head, int data)
 
     //Hacer al nuevo nodo como la cabeza
     newNode->next=(*head);//aquí es más fácil por que podemos encontrar el primer nodo al intánte con head
+    //esta función tiene la posibilidad de que head y en si la lista esten vacios, así que puede quedar como newNode->NULL; 
 
     //Asignar como null al nodo prev
     newNode->prev=NULL;
 
     //prev a head (ahora cabeza es el segundo nodo) esta el nuevo nodo
-    if((*head) != NULL)//¿por qué head sería null?
+    if((*head) != NULL)//Hay más pasos en caso de que head no esté vacía, recuerda que esta fucnión sirve pa' cuando head esta vacía-
         (*head)->prev=newNode;//esto es como nuevo para mi, por que ahora hay previo
 
     //Cabeza apunta al nuevo nodo
@@ -204,7 +205,27 @@ int main()
     insertEnd(&head, 5);//oki, esto va a estar díficil//tengo una pregunta ¿a fuerzas empiezo con insertEnd?
     insertFront(&head, 1);
     insertFront(&head, 6);
-    insertEnd(&head, 9);
+    insertEnd(&head, 9);/*que curioso, nuestras funciones son void, enviamos &head y no lo recibimos
+    la diferencia es esta:
+    struct Node* add(struct Node* last)//circular
+    {
+        return last;
+    }
+    int main()
+    {
+        last=add(last);
+    }
+
+    void insert(struct Node** head)//doble//yo no lo llamaría head, pues es un apuntador que apunta a head, así que no es exactamente head
+    {
+        if((*head)==)
+            (*head)=
+    }
+    int main()
+    {
+        insert(&head);//enviamos la dirección de un apuntador
+    }
+    */
 
     //Se inserta 11 después de cabeza
     insertAfter(head, 11);//insertAfter de lista doble y addAfter de lista circular añaden después de un nodo específico, en este caso añades después de head. Nota como en este add no enviamos &head, no lo necesitamos, no buscamos, por que ya debemos de enviar la dirección de un nodo específico, así como en deleteNode()
