@@ -1,0 +1,9 @@
+ipynb pudo haberse llamado jupyter 
+para compilar necesitas una extensión para que corra el kernel de ipython. Entonces se necesita la extensión llamada Jupyter y es de microsoft, también la extensión de Pyhton de microsoft
+
+si presionas a, agrega una nueva celda above
+si presionas b, agrega una nueva celda below
+
+en python en las operaciones como son aritméticas, se suelen dejar espacio entre los dos elementos a operar y el signo de la operación
+
+si pones shift y enter haces que corra(run) la celda
