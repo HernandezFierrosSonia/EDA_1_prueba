@@ -1,4 +1,4 @@
-//doble
+//Lista doblemente enlazada
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -60,7 +60,7 @@ void insertarEnd(struct Node** head, int data)
 
     newNode->data=data;
 
-    if(*head == NULL)//significa que está vacía//esto es lo que va en insetarToEmpty
+    if(*head == NULL)//significa que está vacía
     {
         (*head)=newNode;
         newNode->next=*head;//podía ser =newNode;
@@ -70,11 +70,9 @@ void insertarEnd(struct Node** head, int data)
 
     //El resto del código es para cuando se quiere insertar en el final y hay nodos
 
-    struct Node* temp;//al principio pensé que podiamos poner a last, pero con head podemos encontrar al último, esto es posible por que el pedazo de código original era doble, pero nos ayuda ahora que sea circular
+    struct Node* temp;
     
-    temp=(*head)->prev;//tenp es que hasta el momento temp es el último//su declaración e inicialización podiamos ponerlo en una sola línea
-    //Nota como a temp no se le crea memoria dinámica, es como hermano de head o last, raritos, bichos. 
-    //tengo una pregunta, lo que yo haga con temp, va a modificar al nodo al que soy igual? Por que según yo temp es una copia. BROTHER SIIIIII, poray si quieres ver el archivo ComportamientoDeTemporalesYHaed'sYLast's
+    temp=(*head)->prev;
 
     temp->next=newNode;
     newNode->prev=temp;
@@ -82,8 +80,8 @@ void insertarEnd(struct Node** head, int data)
     (*head)->prev=newNode; 
 }
 
-void deleteNode(struct Node** head, struct Node* del_node)//¿sirve para eliminar al incio al final y enter nodos? El último nodo lo confirmo
-{//lo que se me ahce curioso es que envie la copia de la dirección del nodo a eliminar, pues supongo que con que tengamos la dirección.
+void deleteNode(struct Node** head, struct Node* del_node)//sirve para eliminar al incio al final y enter nodos
+{
     if(*head == NULL || del_node == NULL)
     {
         printf("La lista está vacía o dirección de nodo inválida");
@@ -134,39 +132,26 @@ int main()
     
     insertarFront(&head, 1);
     insertarEnd(&head, 5);//en este programa, se puede usar insertarEnd e insertarFront para insertar pro primera vez
-    insertarFront(&head, 7);
+    insertarFront(&head, 1);
     insertarFront(&head, 6);
     insertarEnd(&head, 9);
 
-    //displayList(head);//nota display significa mostrar
-    
-    insertarAfter(head, 11);//insertAfter de lista doble y addAfter de lista circular añaden después de un nodo específico, en este caso añades después de head. Nota como en este add no enviamos &head, no lo necesitamos, no buscamos, por que ya debemos de enviar la dirección de un nodo específico, así como en deleteNode()
-    //muy importante que se embía copia de head
+    insertarAfter(head, 11);
 
-    //Se inserta 15 después del segundo nodo
-    insertarAfter(head->next, 15);//jeje, apenas descurbrí que el after es por que inserta después de un elemento, si insertara antes del nodo enviado se llamaría insertBefore. Decir entonces que la función insertaAfter a la derecha está sobreentendido, está demás.
-
-    //displayList(head);
+    insertarAfter(head->next, 15);
 
     //Se borra el penúltimo nodo
     deleteNode(&head, head->next->next->next->next->next);//6° nodo en la lista(incluyendo cabeza)
 
-    //displayList(head);
-
     deleteNode(&head, head->next->next);
-    //según yo hay otra forma de enviar nodos, y no es como que puedeas decir borrame el 1, entonces pienso que es más díficil para el usuario
-
-    //displayList(head);
 
     deleteNode(&head, head);
-
-    //displayList(head);
 
     printf("Bienvenido a realizar una operación en la lista doble circular enlazada.\n");
     printf("Esta es la lista actual: ");
     displayList(head);
     //while(8)
-    {//funciona bien ntp
+    {
         printf("Ingresa 1 para insertar\n");
         printf("Ingresa 2 para eliminar\n");
         //printf("Ingresa 3 para salir");
@@ -177,7 +162,7 @@ int main()
             case 1:
                 printf("Ingresa 1 para insertar al final\n");
                 printf("Ingresa 2 para insertar en el frente/inicio\n");
-                printf("Ingresa 3 para insertar entre nodos\n");//o lo que es lo mismo en medio o simplemente no en los extremos
+                printf("Ingresa 3 para insertar entre nodos\n");
                 scanf("%d", &insertar);
                 switch(insertar)
                 {
@@ -185,7 +170,7 @@ int main()
                         printf("Escribe el data del nodo a insertar: ");
                         scanf("%d", &dato);
                         insertarEnd(&head, dato);
-                        printf("Así queda la lista después de la operación: ");//muy atareado sería poner qué operación
+                        printf("Así queda la lista después de la operación: ");
                         displayList(head);
                         break;
                     case 2:
@@ -200,19 +185,17 @@ int main()
                         scanf("%d", &dato);
                         printf("Escribe la posición en número (sin contar al cero) en la que el nodo se va a insertar después: ");
                         scanf("%d", &position);
-                        copia_head=head;//espero yo que así no se modifique head
-                        //la verdad es que saber si una posición es inválida es muy díficil, no solo los números negativos y el cero, , sino que también puede ser que la posición rebace nuestro número de nodos
-                        //confiamos en que el usuario nos dío una posición  válida
-                        if(position<1||position>5)
+                        copia_head=head;
+                        if((position<1)||(position>4))
                         {
-                            printf("Posición inválida. Sólo del 1 al 5.");
+                            printf("Posición inválida. Sólo del 1 al 4.");
                             return opcion;
                         }
                         for(i=1;i<=(position-1);i++)
                         {
                             copia_head=copia_head->next;
                         }
-                        insertarAfter(copia_head, dato);//que weno que se envíe copia mano
+                        insertarAfter(copia_head, dato);
                         printf("Así queda la lista después de la operación: ");
                         displayList(head);
                         break;
@@ -224,12 +207,12 @@ int main()
             case 2:
                 printf("Ingresa 1 para eliminar al final\n");
                 printf("Ingresa 2 para eliminar en el frente/inicio\n");
-                printf("Ingresa 3 para eliminar entre nodos\n");//o lo que es lo mismo en medio o simplemente no en los extremos
+                printf("Ingresa 3 para eliminar entre nodos\n");
                 scanf("%d", &eliminar);
                 switch(eliminar)
                 {
                     case 1:
-                        deleteNode(&head, head->prev);//aquí serpía muy útil el last si lo hubiera, una fucnión para contar elementos no hace falta, pues tenemos prev de head
+                        deleteNode(&head, head->prev);
                         printf("Así queda la lista después de la operación: ");
                         displayList(head);
                         break;
@@ -242,20 +225,16 @@ int main()
                         //reutilizaré a i, position y copia_head
                         printf("Escribe la posición en número (sin contar al cero) del nodo a eliminar: ");
                         scanf("%d", &position);
-                        copia_head=head;//espero yo que así no se modifique head
-                        //la verdad es que saber si una posición es inválida es muy díficil, no solo los números negativos y el cero, , sino que también puede ser que la posición rebace nuestro número de nodos
-                        //confiamos en que el usuario nos dío una posición  válida
-                        if(position<1||position>5)
+                        copia_head=head;
+                        if((position<1)||(position>4))
                         {
-                            printf("Posición inválida. Sólo del 1 al 5.");
+                            printf("Posición inválida. Sólo del 1 al 4.");
                             return opcion;
                         }
-                        for(i=1;i<position;i++)//algo que te va a sorprender es que si fuera posición 1 si entra, es por ello que le quité 1 a la posición, por que no debería entrar en posición 1, sino copia_head cambiaría al nodo siguiente de head
-                        //en cambio si no le pones el igual no entra cuando le das posición la 2, aunque no entra en la posición 1 por que no debería
-                        //qué pasaría con ;i<position;, LOL, también funcionaba, de hecho era mejor
-                        /*en conclusión, si es for(i=1;i<1;i++) no entra, si es for(i=1;i<=1;i++) si entra*/
+                        for(i=1;i<=(position-1);i++)//también podía ser ;i<position;
                         {
                             copia_head=copia_head->next;
+                            printf("Esta es i %d\n", i);
                         }
                         deleteNode(&head, copia_head);
                         printf("Así queda la lista después de la operación: ");
@@ -266,7 +245,7 @@ int main()
                         break;
                 }
                 break;
-            /*case 3:
+            /*case 3://se supone que era opción salir, pero como no es ciclo
                 return opcion;//jugando un poco
                 break;*/
             default:

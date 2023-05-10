@@ -15,7 +15,7 @@ struct Node//verás que se vuelve a llamar a sí misma
 
 struct Node* addToEmpty(struct Node* last, int data)//es una función muy importante
 {
-    if(last!=NULL) return last;//por qué es tan importante que esté igualada a NULL?
+    if(last!=NULL) return last;//aquí verifica que este vacía, pues si aun no se ha insertado, head aun estaría en NULL
     
     //asignar memoria al nuevo nodo
     struct Node* newNode=(struct Node*)malloc(sizeof(struct Node));//nunca me voy a aprender la sintaxis de malloc
@@ -27,7 +27,7 @@ struct Node* addToEmpty(struct Node* last, int data)//es una función muy import
     last=newNode;//tanto last como newNode son nodos, es como que last guarda una copia
 
     //se crea enlace para si mismo
-    last->next=last;//ah caray, newNode no es el protagonista, pero...¿por qué crear a newNode entonces? hasta lo que voy entendiendo no es necesario, ¿por qué no simplemente crearle memoria dinámica a last?
+    last->next=last;//es lo mismo que last->next=newNode, ya que newNode y last son lo mismo mano, claro dentro de esta función//ah caray, newNode no es el protagonista, pero...¿por qué crear a newNode entonces? hasta lo que voy entendiendo no es necesario BROTHER EXCELENTE PROPUESTA DEBERPIAS INTENTARLO, y ¿por qué no simplemente crearle memoria dinámica a last?
 
     return last;//regresamos una dirección, la de newNode(por que eso guarda last) y así mismo con la característica que solo tiene last(no la tiene newNode) que es hacia dónde apunta next//jeje en mi opinión más complejo de lo necesario
     //estaba más chido si la función recibia la dirección de last y ya de ahí obteniamos lo que queriamos, es más, ni hubieramos tenido que regresar algo
@@ -53,13 +53,13 @@ struct Node* addFront(struct Node* last, int data)
     
     //ojo que aquí no se se hace last=newNode; por lo que concluimos que last siempre estará en el último elemento de la derecha
 
-    return last;//supongo que regresa last por que se modificó, y como de este si tenemos que tener rastro (no como los newNodes por que esos se conectan pero se pierden)
+    return last;//qué pasa si regresaba newNode brother, no se supone que son lo mismo?//supongo que regresa last por que se modificó, y como de este si tenemos que tener rastro (no como los newNodes por que esos se conectan pero se pierden)
 }
 
 //Agregar nodo al final
 struct Node* addEnd(struct Node* last, int data) 
 {
-    //Se revisa si el nodo está vacío
+    //No Se revisa si el nodo está vacío, yo diría mejor que se revisa que la lista no este vacía
     if(last==NULL) return addToEmpty(last, data); //pos qué no ya vale algo last ahí en el main? lee bien sonia, jaja, me espantas, dice ==
     //literal la línea anterior solo se va a ajecutar cuando el programador se equivoque y ponga un addEnd antes de un addToEmpty, este tipo de funciones se me hacen bien inútiles, programamos para cuando el usuario se equivoca
 
@@ -122,7 +122,7 @@ struct Node* addAfter(struct Node* last, int data, int item)
     //p y last->next son enteros
 
     printf("\nEl nodo dado no esta presente en la lista.");
-    return last;
+    return last;//pa' qué si ni lo modificamos? ya sé pero cómo hibamos a saber que no estaba, no podemoe regresar null y return; no se permite.
     
 }
 
