@@ -1,52 +1,50 @@
-# Lista de libros
-libros = [] #es global
-
 # Función para agregar un libro
-def agregar_libro():
-    titulo = input('Ingrese el título del libro: ')
-    libros.append(titulo)
+def agregar_libro(books): 
+    titulo = input('Ingrese el título del libro: ') #un libro esta representado por su titulo
+    books.append(titulo) 
     print('Libro agregado:', titulo)
 
 # Función para eliminar un libro
-def eliminar_libro():
+def eliminar_libro(books):
     titulo = input('Ingrese el título del libro: ')
-    if titulo in libros:
-        libros.remove(titulo)
+    if titulo in books:
+        books.remove(titulo)
         print('Libro eliminado:', titulo)
     else:
         print('Libro no encontrado')
 
 # Función para ordenar la biblioteca
-def ordenar_biblioteca():
-    libros.sort()
+def ordenar_biblioteca(books):
+    books.sort()
     print('\nLa biblioteca queda con el siguiente orden:\n')
-    for libro in libros:
+    for libro in books:
         print(libro)
 
 # Función para ver la biblioteca
-def ver_biblioteca():
+def ver_biblioteca(books): 
     print('\nLa biblioteca contiene los siguientes libros:\n')
-    for libro in libros:
+    for libro in books: 
         print(libro)
 
-# Menú principal
-
-while True:
-    print('\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n')
-    print('1 Agregar libro')
-    print('2 Eliminar libro')
-    print('3 Ordenar biblioteca')
-    print('4 Ver biblioteca')
-    print('5 Salir')
-    opcion = input('\nIngrese la opción: ')
-    
-    if opcion == '1':
-        agregar_libro()
-    elif opcion == '2':
-        eliminar_libro()
-    elif opcion == '3':
-        ordenar_biblioteca()
-    elif opcion == '4':
-        ver_biblioteca()
-    elif opcion == '5':
-        break
+# Código principal
+if __name__ == "__main__":
+    libros = [] 
+    while True:
+        print('\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n')
+        print('1 Agregar libro')
+        print('2 Eliminar libro')
+        print('3 Ordenar biblioteca')
+        print('4 Ver biblioteca')
+        print('5 Salir')
+        option = input('\nIngrese la opción: ')
+        
+        if option == '1':
+            agregar_libro(libros) 
+        elif option == '2':
+            eliminar_libro(libros)
+        elif option == '3':
+            ordenar_biblioteca(libros)
+        elif option == '4':
+            ver_biblioteca(libros)
+        elif option == '5': 
+            break
