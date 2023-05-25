@@ -38,7 +38,7 @@ def fibonacci(n):
             fib.append(fib[-1] + fib[-2])
         return fib
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     # Este bloque de código solo se ejecuta si el archivo se ejecuta como un script
     while True:
         # Muestra un menú de opciones al usuario
