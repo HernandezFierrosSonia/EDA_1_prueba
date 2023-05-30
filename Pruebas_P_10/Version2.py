@@ -1,9 +1,9 @@
 # Función para agregar un libro
-def agregar_libro():
+def agregar_libro(*books): #la variable books en esta funcion y la variable libros en el main son alias para el mismo objeto
     titulo = input('Ingrese el título del libro: ')
-    libros.append(titulo)
+    books.append(titulo)
     print('Libro agregado:', titulo)
-    return libros
+    #return books
 
 # Función para eliminar un libro
 def eliminar_libro(libros):
@@ -24,13 +24,12 @@ def ordenar_biblioteca(libros):
 # Función para ver la biblioteca
 def ver_biblioteca(books): #el argumento recibido se puede llamar diferente
     print('\nLa biblioteca contiene los siguientes libros:\n')
-    for libro in books:
-        print(libro)
+    print(books)
 
 # Menú principal
 if __name__ == '__main__':
+    libros = [] #lista de libros local 
     while True:
-        libros = [] #lista de libros local global
         print('\nBienvenido a la biblioteca, puede realizar las siguientes operaciones:\n')
         print('1 Agregar libro')
         print('2 Eliminar libro')
@@ -38,14 +37,20 @@ if __name__ == '__main__':
         print('4 Ver biblioteca')
         print('5 Salir')
         opcion = input('\nIngrese la opción: ')
-        
+            
         if opcion == '1':
-            libros=agregar_libro()
+            agregar_libro(*libros)
+            #libros=agregar_libro(libros)
+            print(libros)
         elif opcion == '2':
             eliminar_libro()
         elif opcion == '3':
             ordenar_biblioteca()
         elif opcion == '4':
-            ver_biblioteca(*libros)
+            ver_biblioteca(libros)
         elif opcion == '5':
             break
+
+
+#nota nueva, *args es para tuplas(también para listas), **es para diccionarios.
+#nota, una lista1 igual a otra lista2, si moficas cualquiera de las dos, modificas la otra
