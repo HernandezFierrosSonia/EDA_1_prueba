@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Baja de Personal</title>
+    </head>
+    <body>
+        <h1>Baja de Personal</h1>
+        <form action="{{ url_for('baja_personal') }}" method="post">
+            <label for="codigo">Código del trabajador:</label><br>
+            <input type="text" id="codigo" name="codigo"><br><br>
+            <input type="submit" value="Dar de baja">
+        </form>
+
+        {% if mensaje %}
+            <p>{{ mensaje }}</p>
+        {% endif %}
+
+        <a href="{{ url_for('menu_personal') }}">Volver al menú de personal</a>
+    </body>
+</html>

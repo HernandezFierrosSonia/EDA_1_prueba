@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agregar Suministro</title>
+    </head>
+    <body>
+        <h1>Agregar Suministro</h1>
+        <form action="{{ url_for('agregar_suministros_view') }}" method="post">
+            <label for="codigo">Código:</label><br>
+            <input type="text" id="codigo" name="codigo"><br><br>
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br><br>
+            <label for="precio">Precio:</label><br>
+            <input type="text" id="precio" name="precio"><br><br>
+            <input type="submit" value="Agregar suministro">
+        </form>
+
+        {% if mensaje %}
+            <p>{{ mensaje }}</p>
+        {% endif %}
+
+        <h2>Inventario</h2>
+        <ul>
+            {% for codigo, producto in inventario.items() %}
+                <li>{{ codigo }} - {{ producto.nombre }} - ${{ producto.precio }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{{ url_for('menu_inventario') }}">Volver al menú de inventario</a>
+    </body>
+</html>
